@@ -3,8 +3,25 @@
 <head>
 	<title>DevOps Project 1</title>
 </head>
-<body>
+<body style="text-align: center">
 	<h1>My DevOps Server</h1>
 	<p>Deployed automatically on Ubuntu.</p>
+	<script>
+		var xhttp = new XMLHttpRequest();
+		xhttp.onload =(res)=>{
+			if(res.target.status == 200){
+				var jj = JSON.parse(res.target.responseText);
+				var random_dog = jj.message[Math.floor(Math.random() *jj.message.length)];
+				document.body.innerHTML += "<p>Here's a picture of a random shetland :D</p>";
+				document.body.innerHTML += '<img height="600" src="' + random_dog + '">';
+				document.body.innerHTML += "<p>Dog pictures come from dog.ceo api</p>";
+			}
+			else{
+				document.body.innerHTML = "Cannot get info from dog api.";
+			}
+		}
+		xhttp.open("GET", "https://dog.ceo/api/breed/sheepdog/shetland/images", true);
+		xhttp.send();
+	</script>
 </body>
 </html>
