@@ -1,6 +1,7 @@
 #!/bin/bash
+export DEBIAN_FRONTEND=noninteractive
 
-echo "01-system-setup starting..."
+echo "01-system-setup starting..." 
 
 #check sudo authorisation
 if ! $(sudo -l &> /dev/null); then
