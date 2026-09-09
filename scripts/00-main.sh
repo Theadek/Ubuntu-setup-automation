@@ -31,6 +31,12 @@ if [ $? -ne 0 ]; then
 fi
 
 #5 app
+source "$scriptDir/05-myapp-setup.sh"
+if [ $? -ne 0 ]; then
+	echo "Stopping setup"
+	exit 1
+fi
+
 #6 verify
 
 

@@ -31,7 +31,7 @@ elif [ -f "/usr/local/etc/nginx/nginx.conf" ]; then
 fi
 
 #copy myapp.conf file
-if sudo cp "$scriptDir/../nginx/myapp.conf" "$nginx_directory/myapp.conf"; then
+if sudo cp "$scriptDir/../nginx/myapp.conf" "$nginx_directory/nginx.conf"; then
 	echo "03: copied myapp.conf succesfully"
 else
 	echo "03-Error: couldn't copy myapp.conf"
