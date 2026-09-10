@@ -1,8 +1,6 @@
 #!/bin/bash
 
 
-export DEBIAN_FRONTEND=noninteractive
-
 echo "01-system-setup starting..." 
 
 #check sudo authorisation
@@ -13,7 +11,7 @@ if ! $(sudo -l &> /dev/null); then
 fi
 
 #update and upgrade packages
-if sudo apt-get update && sudo apt-get -y upgrade; then
+if sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q upgrade; then
 	echo "01-Update completed succesfully"
 	return 0
 else
