@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 echo "04-firewall-setup starting..."
 
 #check sudo authorisation
