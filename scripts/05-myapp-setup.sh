@@ -27,7 +27,7 @@ else
 fi
 
 #copy myapp.conf
-if sudo cp "$scriptDir/../app/index.html" "/opt/myapp/index.html"; then
+if sudo cp "$scriptDir/../frontend/index.html" "/opt/myapp/index.html"; then
 	echo "05: Copied index.html succesfully"
 else
 	echo "05-Error: Failed to copy index.html"

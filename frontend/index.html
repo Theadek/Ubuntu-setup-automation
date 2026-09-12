@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DevOps Project 1</title>
+</head>
+<body style="text-align: center">
+	<h1>My DevOps Server</h1>
+	<p>Deployed automatically on Ubuntu.</p>
+
+	<p>Random Rabbit</p>
+    <button id="rabbitButton">
+        Get Rabbitubuntu
+    </button>
+
+    <br><br>
+
+    <img
+        id="rabbitImage"ubuntu
+        width="500"
+        alt="Random rabbit"
+    >
+
+    <script>
+        const button = document.getElementById("rabbitButton");
+        const image = document.getElementById("rabbitImage");
+
+        button.addEventListener("click", async () => {
+            try {
+                const response = await fetch("/api/rabbit");
+
+                if (!response.ok) {
+                    throw new Error("Request failed");
+                }
+
+                const data = await response.json();
+                console.log(data);
+                image.src = data.url;
+
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
