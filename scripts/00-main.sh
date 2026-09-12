@@ -37,7 +37,15 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-#6 verify
+#6 node.js
+source "$scriptDir/06-nodejs-setup.sh"
+if [ $? -ne 0 ]; then
+	echo "Stopping setup"
+	exit 1
+fi
+
+
+#7 verify
 
 
 echo "00-Linux server automation finished succesfully"
