@@ -9,7 +9,7 @@ if curl "https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh"
     echo "06-NVM installed successfully"
 else
     echo "06-Error: Failed to install NVM"
-    return 1
+    exit 1
 fi
 
 #Reloading nvm after installation
@@ -21,7 +21,7 @@ if nvm install --lts; then
     echo "06-Node.js LTS installed successfully"
 else
     echo "06-Error: Failed to install Node.js LTS"
-    return 1
+    exit 1
 fi
 nvm alias default 'lts/*'
 
@@ -31,11 +31,9 @@ if npm ci; then
     echo "06-JS packages installed successfully"
 else
     echo "06-Error: Failed to install JS packages"
-    return 1
+    exit 1
 fi
 
 #Starting Node.js server
 echo "06-Starting node server..."
 nohup node server.js &
-
-return 0

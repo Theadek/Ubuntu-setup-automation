@@ -10,7 +10,7 @@ echo "05-myapp setup starting..."
 if ! $(sudo -l &> /dev/null); then
 	echo "05-Error: root privilages are needed to run this script"
 	echo "$_NOTROOT"
-	return $E_NOTROOT
+	exit $E_NOTROOT
 fi
 
 #check if /opt/myapp directory exist
@@ -22,7 +22,7 @@ else
 		echo "05: Created /opt/myapp directory"
 	else
 		echo "05-Error: couldn't create /opt/myapp directory"
-		return 1
+		exit 1
 	fi
 fi
 
@@ -31,7 +31,5 @@ if sudo cp "$scriptDir/../frontend/index.html" "/opt/myapp/index.html"; then
 	echo "05: Copied index.html succesfully"
 else
 	echo "05-Error: Failed to copy index.html"
-	return 1
+	exit 1
 fi
-
-return 0
