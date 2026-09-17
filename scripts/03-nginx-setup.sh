@@ -1,41 +1,37 @@
 #!/bin/bash
 
 
+set -euo pipefail
+
 #Get script path
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
+NGINX_CONFIG="/etc/nginx/nginx.conf"
+
 echo "03-nginx-setup starting..."
 
-
 #install nginx packages
-if sudo apt-get install -y nginx; then
-	echo "03-nginx installed succesfully"
-else
-	echo "03-nginx installation failed"
-	exit 1
-fi
-
-#find where is nginx directory
-if [ -f "/usr/local/nginx/conf/nginx.conf" ]; then
-        nginx_directory="/usr/local/nginx/conf/nginx"
-elif [ -f "/etc/nginx/nginx.conf" ]; then
-        nginx_directory="/etc/nginx"
-elif [ -f "/usr/local/etc/nginx/nginx.conf" ]; then
-        nginx_directory="/usr/local/etc/nginx"
-fi
+echo "03-nginx-setup: Installing nginx..."
+sudo apt-get install -y nginx
 
 #copy myapp.conf file
-if sudo cp "$scriptDir/../nginx/myapp.conf" "$nginx_directory/nginx.conf"; then
-	echo "03: copied myapp.conf succesfully"
-else
-	echo "03-Error: couldn't copy myapp.conf"
-	exit 1
-fi
+echo "03-nginx-setup: Copying myapp.conf..."
+sudo cp "$scriptDir/../nginx/myapp.conf" "$NGINX_CONFIG"
+
+#test nginx configuration
+echo "03-nginx-setup: Testing nginx configuration..."
+sudo nginx -t
+
+#enabling nginx service
+echo "03-nginx-setup: Enabling nginx service..."
+sudo systemctl enable nginx
+
+#start nginx service
+echo "03-nginx-setup: Starting nginx service..."
+sudo systemctl start nginx
 
 #reload nginx
-if sudo nginx -s reload; then
-	echo "03: nginx reloaded succesfully"
-else
-	echo "03-Error: couldn't reload nginx"
-	exit 1
-fi
+echo "03-nginx-setup: Reloading nginx service..."
+sudo systemctl reload nginx
+
+echo "03-nginx-setup completed"
