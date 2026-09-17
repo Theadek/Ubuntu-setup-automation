@@ -32,7 +32,7 @@ fi
 echo "00 - Linux server automation started..."
 
 run_step "01 - System setup" "$scriptDir/01-system-setup.sh"
-#run_step "02 - User setup" "$scriptDir/02-users-setup.sh"
+run_step "02 - User setup" "$scriptDir/02-users-setup.sh"
 run_step "03 - Nginx setup" "$scriptDir/03-nginx-setup.sh"
 run_step "04 - Firewall setup" "$scriptDir/04-firewall-setup.sh"
 run_step "05 - Application setup" "$scriptDir/05-myapp-setup.sh"
