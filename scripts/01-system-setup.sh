@@ -1,14 +1,17 @@
 #!/bin/bash
 
 
+set -euo pipefail
+
 echo "01-system-setup starting..." 
 
-
 #update and upgrade packages
-if sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q upgrade; then
-	echo "01-Update completed succesfully"
-	exit 0
-else
-	echo "01-Update failed"
-	exit 1
-fi
+echo "01-Update packages..."
+sudo apt-get update
+
+#upgrade packages without user interaction
+echo "01-Upgrade packages..."
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q upgrade
+
+echo "01-system-setup completed"
+
