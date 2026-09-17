@@ -1,29 +1,34 @@
 #!/bin/bash
 
 
+set -euo pipefail
+
 #Get script path
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
-echo "05-myapp setup starting..."
+APP_DIR="/opt/myapp"
+APP_USER="myapp"
 
+echo "05 - Application setup starting..."
 
-#check if /opt/myapp directory exist
-if [ -d "/opt/myapp" ]; then
-	echo "05: /opt/myapp directory exist"
-else
-	#create /opt/myapp directory
-	if sudo mkdir -p /opt/myapp; then
-		echo "05: Created /opt/myapp directory"
-	else
-		echo "05-Error: couldn't create /opt/myapp directory"
-		exit 1
-	fi
-fi
+#Create application directory
+echo "05: Creating application directory..."
+sudo mkdir -p "$APP_DIR"
 
-#copy myapp.conf
-if sudo cp "$scriptDir/../frontend/index.html" "/opt/myapp/index.html"; then
-	echo "05: Copied index.html succesfully"
-else
-	echo "05-Error: Failed to copy index.html"
-	exit 1
-fi
+#Copy application files
+echo "05: Copying frontend..."
+sudo cp "$scriptDir/../frontend/index.html" "$APP_DIR/index.html"
+
+#Set ownership and permissions
+echo "05: Setting application ownership..."
+sudo chown -R "$APP_USER:$APP_USER" "$APP_DIR"
+
+#Set permissions for directory - readable and executable by all, writable by owner
+echo "05: Setting directory permissions..."
+sudo chmod 755 "$APP_DIR"
+
+#Set permissions for index.html - not executable, readable by all, writable by owner
+echo "05: Setting file permissions..."
+sudo chmod 644 "$APP_DIR/index.html"
+
+echo "05: Application files deployed successfully."
