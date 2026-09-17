@@ -6,12 +6,6 @@ scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
 echo "03-nginx-setup starting..."
 
-#check sudo authorisation
-if ! $(sudo -l &> /dev/null); then
-	echo "03-Error: root privilages are needed to run this script"
-	echo "$_NOTROOT"
-	exit $E_NOTROOT
-fi
 
 #install nginx packages
 if sudo apt-get install -y nginx; then

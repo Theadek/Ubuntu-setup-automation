@@ -3,12 +3,6 @@
 
 echo "04-firewall-setup starting..."
 
-#check sudo authorisation
-if ! $(sudo -l &> /dev/null); then
-	echo "04-Error: root privilages are needed to run this script"
-	echo "$_NOTROOT"
-	exit $E_NOTROOT
-fi
 
 #install ufw package
 if sudo apt-get install -y ufw; then

@@ -6,12 +6,6 @@ scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
 echo "05-myapp setup starting..."
 
-#check sudo authorisation
-if ! $(sudo -l &> /dev/null); then
-	echo "05-Error: root privilages are needed to run this script"
-	echo "$_NOTROOT"
-	exit $E_NOTROOT
-fi
 
 #check if /opt/myapp directory exist
 if [ -d "/opt/myapp" ]; then

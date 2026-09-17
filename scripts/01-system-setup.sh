@@ -3,12 +3,6 @@
 
 echo "01-system-setup starting..." 
 
-#check sudo authorisation
-if ! $(sudo -l &> /dev/null); then
-	echo "01-Error: root privilages are needed to run this script"
-	echo "$_NOTROOT"
-	exit $E_NOTROOT
-fi
 
 #update and upgrade packages
 if sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q upgrade; then
