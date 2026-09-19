@@ -1,0 +1,14 @@
+[Unit]
+Description=MyApp Node.js backend
+After=network.target
+
+[Service]
+Type=simple
+User=myapp
+WorkingDirectory=/opt/myapp/backend
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
