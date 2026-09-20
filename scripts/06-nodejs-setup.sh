@@ -29,7 +29,7 @@ nvm --version
 #Installing npm packages
 echo "06-Installing backend dependencies..."
 cd $BACKEND_DIR
-sudo npm ci --prefix /opt/myapp/backend
+sudo -u myapp npm ci --prefix /opt/myapp/backend
 
 #Creating service
 sudo cp "$scriptDir/../services/myapp.service" /etc/systemd/system/myapp.service

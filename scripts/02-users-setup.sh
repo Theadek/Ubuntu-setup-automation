@@ -28,7 +28,7 @@ else
 
     sudo useradd \
         --system \
-        --no-create-home \
+        --create-home \
         --shell /usr/sbin/nologin \
         "$APP_USER"
 fi
