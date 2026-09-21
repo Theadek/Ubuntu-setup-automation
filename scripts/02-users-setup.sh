@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 set -euo pipefail
 
 DEVOPS_USER="devops"
