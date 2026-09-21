@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+set -euo pipefail
+
 NVM_VERSION="v0.40.3"
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 BACKEND_DIR="/opt/myapp/backend"
@@ -10,21 +12,9 @@ echo "06-Installing NVM..."
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-#Reloading nvm after installation
-echo "06-Reloading NVM..."
-export NVM_DIR="$HOME/.nvm"
-source "$NVM_DIR/nvm.sh"
-
-#Installing Node.js LTS
-echo "06-Installing Node.js LTS..."
-nvm install --lts
-nvm alias default 'lts/*'
-
+#Checking Node.js version
 echo "06-Node.js version:"
 node --version
-
-echo "06-Nvm version:"
-nvm --version
 
 #Installing npm packages
 echo "06-Installing backend dependencies..."
