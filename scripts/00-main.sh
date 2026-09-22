@@ -37,7 +37,7 @@ run_step "03 - Nginx setup" "$scriptDir/03-nginx-setup.sh"
 run_step "04 - Firewall setup" "$scriptDir/04-firewall-setup.sh"
 run_step "05 - Application setup" "$scriptDir/05-myapp-setup.sh"
 run_step "06 - Node.js setup" "$scriptDir/06-nodejs-setup.sh"
-#run_step "07 - Verification" "$scriptDir/07-verify.sh"
+run_step "07 - Verification" "$scriptDir/07-verify.sh"
 
 echo
 echo "===================="
