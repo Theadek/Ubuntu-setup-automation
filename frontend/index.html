@@ -24,7 +24,7 @@
         const button = document.getElementById("rabbitButton");
         const image = document.getElementById("rabbitImage");
 
-        button.addEventListener("click", async () => {
+        async function loadRabbit() {
             try {
                 const response = await fetch("/api/rabbit");
 
@@ -38,7 +38,10 @@
             } catch (error) {
                 console.error(error);
             }
-        });
+        };
+        loadRabbit();
+        button.addEventListener("click", loadRabbit);
+
     </script>
 </body>
 </html>
