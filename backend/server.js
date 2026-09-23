@@ -25,6 +25,12 @@ app.get("/api/rabbit", async (req, res) => {
     }
 });
 
+app.get("/api/health", (req, res) => {
+    res.json({
+        status: "ok"
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });

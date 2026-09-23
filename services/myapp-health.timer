@@ -1,0 +1,10 @@
+[Unit]
+Description=Run MyApp health check every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Unit=myapp-health.service
+
+[Install]
+WantedBy=timers.target

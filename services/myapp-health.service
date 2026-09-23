@@ -1,0 +1,6 @@
+[Unit]
+Description=MyApp health check
+
+[Service]
+Type=oneshot
+ExecStart=/opt/myapp/scripts/health-check.sh
