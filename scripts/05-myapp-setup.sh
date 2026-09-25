@@ -21,6 +21,9 @@ echo "05: Copying frontend..."
 sudo cp "$scriptDir/../frontend/index.html" \
     "$APP_DIR/frontend/index.html"
 
+sudo cp "$scriptDir/../frontend/default_rabbit" \
+    "$APP_DIR/frontend/default_rabbit"
+
 #Copy backend files
 echo "05: Copying backend..."
 sudo cp "$scriptDir/../backend/server.js" \
