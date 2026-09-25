@@ -25,7 +25,7 @@ sudo -u myapp npm ci --prefix /opt/myapp/backend
 sudo cp "$scriptDir/../services/myapp.service" /etc/systemd/system/myapp.service
 sudo cp "$scriptDir/../services/myapp-health.service" /etc/systemd/system/myapp-health.service
 sudo cp "$scriptDir/../services/myapp-health.timer" /etc/systemd/system/myapp-health.timer
-sudo mkdir /opt/myapp/scripts
+sudo mkdir -p /opt/myapp/scripts
 sudo cp "$scriptDir/health-check.sh" /opt/myapp/scripts/health-check.sh
 
 echo "06-Reloading systemd..."
