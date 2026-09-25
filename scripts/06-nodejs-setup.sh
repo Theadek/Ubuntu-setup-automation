@@ -3,12 +3,11 @@
 
 set -euo pipefail
 
-NVM_VERSION="v0.40.3"
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 BACKEND_DIR="/opt/myapp/backend"
 
-#Installing NVM
-echo "06-Installing NVM..."
+#Installing Node.js
+echo "06-Installing nodejs"
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
