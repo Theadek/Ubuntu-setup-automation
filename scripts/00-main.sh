@@ -6,6 +6,11 @@ set -euo pipefail
 #Get script path
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
+#Create a log file with a timestamp
+LOG_FILE="$scriptDir/../logs/setup-$(date '+%Y-%m-%d_%H-%M-%S').log"
+mkdir -p "$scriptDir/../logs"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
 run_step() {
     local step_name="$1"
     local script="$2"
